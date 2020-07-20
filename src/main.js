@@ -4,6 +4,7 @@ const prioritySelector = document.getElementById('prioritySelector');
 const textInput = document.getElementById('textInput');
 const addButton = document.getElementById('addButton');
 const viewSection = document.getElementById('viewSection');
+const resetButton = document.getElementById('resetButton')
 var spanCount = 0;
 var j = 0;
 
@@ -57,6 +58,8 @@ document.getElementById("counter").innerHTML = spanCount;
 
 
 function taskFinished(){
+  var r = confirm("Are you sure you finished this task?");
+  if (r == true) {
 this.parentNode.lastElementChild.style.textDecoration = "line-through";
  this.parentNode.lastElementChild.style.backgroundColor = '#4CAF50';
   this.parentNode.lastElementChild.style.borderRadius = "5px" ;
@@ -66,8 +69,21 @@ this.parentNode.children[1].innerHTML = '0';
 this.parentNode.children[1].style.color = "#4CAF50";
 this.remove();
 }
+else {
+  this.checked = false;
+}
 
+}
 
+resetButton.onclick = function resetList(){
+  var res = confirm("This action will delete all your tasks. Confirm to proceed.");
+  if (res == true) {
+var node= document.getElementById("viewSection");
+while (node.firstChild) {
+    node.removeChild(node.firstChild);
+}
+}
+}
 
 const sort = document.getElementById('sortButton');
 
