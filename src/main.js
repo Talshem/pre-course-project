@@ -5,8 +5,9 @@ const textInput = document.getElementById('textInput');
 const addButton = document.getElementById('addButton');
 const viewSection = document.getElementById('viewSection');
 const resetButton = document.getElementById('resetButton')
+
 var spanCount = 0;
-var j = 0;
+var j = 1;
 
 addButton.onclick = function()
 {
@@ -16,7 +17,6 @@ textInput.value = '';
 
 
       if (task == "") {
-        alert("Please fill in a task");
       return;
         }
 
@@ -48,7 +48,10 @@ dDiv.textContent = date
 primaryDiv.appendChild(tDiv);
 tDiv.textContent = task;
 
+
 viewSection.appendChild(primaryDiv);
+localStorage.setItem(dDiv.textContent, tDiv.textContent);
+
 addEventsDragAndDrop(primaryDiv);
 checking.addEventListener('click', taskFinished);
 
@@ -56,23 +59,23 @@ spanCount ++;
 document.getElementById("counter").innerHTML = spanCount;
 }
 
-
 function taskFinished(){
-  var r = confirm("Are you sure you finished this task?");
-  if (r == true) {
+  var r = confirm("Did you finish this task?");
+  if (r == true) 
+  {
+this.parentNode.lastElementChild.style.backgroundColor = '#4CAf99';
+this.parentNode.children[1].style.color = "rgb(76, 175, 153, 0)";
 this.parentNode.lastElementChild.style.textDecoration = "line-through";
- this.parentNode.lastElementChild.style.backgroundColor = '#4CAF50';
-  this.parentNode.lastElementChild.style.borderRadius = "5px" ;
- spanCount --;
- document.getElementById("counter").innerHTML = spanCount;
 this.parentNode.children[1].innerHTML = '0';
-this.parentNode.children[1].style.color = "#4CAF50";
+this.parentNode.lastElementChild.style.borderRadius = "5px" ;
+this.parentNode.lastElementChild.style.opacity = "0.75" ;
+spanCount --;
+document.getElementById("counter").innerHTML = spanCount;
 this.remove();
-}
-else {
+  }
+        else {
   this.checked = false;
 }
-
 }
 
 resetButton.onclick = function resetList(){
@@ -81,6 +84,9 @@ resetButton.onclick = function resetList(){
 var node= document.getElementById("viewSection");
 while (node.firstChild) {
     node.removeChild(node.firstChild);
+    spanCount = 0;
+    document.getElementById("counter").innerHTML = spanCount;
+
 }
 }
 }
@@ -182,6 +188,27 @@ function dragEnd(e) {
 }
  
 
+function deleteItem(ev) {
+  var elem = this;
+
+  
+  ev.preventDefault();
+  var pos = 1;
+  var id = setInterval(frame, 50);
+  function frame() {
+      elem.style.opacity = pos; 
+      pos -= 0.1; 
+      if ( pos <= -0.5){
+       elem.remove();  
+      }
+    }
+      if (elem.children[3]){
+      elem.children[0].remove();
+       spanCount --;
+}
+ document.getElementById("counter").innerHTML = spanCount;
+}
+
 function addEventsDragAndDrop(el) {
 
   el.addEventListener('dragstart', dragStart, false);
@@ -190,6 +217,7 @@ function addEventsDragAndDrop(el) {
   el.addEventListener('dragleave', dragLeave, false);
   el.addEventListener('drop', dragDrop, false);
   el.addEventListener('dragend', dragEnd, false);
+  el.addEventListener('contextmenu', deleteItem, false);
 
 }
  

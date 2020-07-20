@@ -145,12 +145,17 @@ font-size: 20px;
 
 
 }
+
+p{
+  font-size: 12px;
+}
 #viewSection {
   line-height: 2;
     float: left;
-    height:420px;
+    height:380px;
     width: 540px;
   overflow: auto;
+  margin-bottom: 5px;
 }
 
 .todoContainer {
@@ -161,14 +166,14 @@ font-size: 20px;
 
 
 .todoPriority {
-    display:inline;
+display:inline;
 float:left;
 margin-right: 15px;
 margin-left: 15px;
 }
 
 .todoCreatedAt {
-        display:inline;
+display:inline;
 float: left;
 margin-right: 15px;
 }
@@ -225,6 +230,7 @@ body section .draggable {
 body section .draggable:hover {
      border: 2px dashed rgba(0, 0, 0, 0.4);
      background-color:rgba(255, 255, 255, 0.2);
+     border-radius: 5px;
 
 }
 body section .draggable:after {
