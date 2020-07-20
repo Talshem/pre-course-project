@@ -204,6 +204,9 @@ function deleteItem(ev) {
     }
       if (elem.children[3]){
       elem.children[0].remove();
+      elem.children[0].style.margin = '0px 0px 0px 37px';
+      elem.children[1].style.margin = '0px 15px 0px 15px';
+      elem.children[2].style.margin = '0px 15px 0px 15px';
        spanCount --;
 }
  document.getElementById("counter").innerHTML = spanCount;
