@@ -5,11 +5,12 @@ const textInput = document.getElementById('textInput');
 const addButton = document.getElementById('addButton');
 const viewSection = document.getElementById('viewSection');
 var spanCount = 0;
+var j = 0;
 
 addButton.onclick = function()
 {
-let task = textInput.value;
-let priority = prioritySelector.value
+var task = textInput.value;
+var priority = prioritySelector.value
 textInput.value = '';
 
 
@@ -31,7 +32,7 @@ primaryDiv.setAttributeNode(attr);
 
 
 const pDiv = document.createElement('div');
-pDiv.classList.add('priority');
+pDiv.classList.add('todoPriority');
 const dDiv = document.createElement('div');
 dDiv.classList.add('todoCreatedAt');
 const tDiv = document.createElement('div');
@@ -46,34 +47,26 @@ dDiv.textContent = date
 primaryDiv.appendChild(tDiv);
 tDiv.textContent = task;
 
-
 viewSection.appendChild(primaryDiv);
 addEventsDragAndDrop(primaryDiv);
-
+checking.addEventListener('click', taskFinished);
 
 spanCount ++;
 document.getElementById("counter").innerHTML = spanCount;
+}
 
 
-checking.onclick = function(){
-var marking = tDiv;
-
-   if ( checking.checked ) {
- marking.style.textDecoration = "line-through";
- marking.style.backgroundColor = '#4CAF50';
+function taskFinished(){
+this.parentNode.lastElementChild.style.textDecoration = "line-through";
+ this.parentNode.lastElementChild.style.backgroundColor = '#4CAF50';
+  this.parentNode.lastElementChild.style.borderRadius = "5px" ;
  spanCount --;
  document.getElementById("counter").innerHTML = spanCount;
-   }
-
-else {
- marking.style.textDecoration = null;
- marking.style.backgroundColor = null;
- spanCount ++;
- document.getElementById("counter").innerHTML = spanCount;
- }
+this.parentNode.children[1].innerHTML = '0';
+this.parentNode.children[1].style.color = "#4CAF50";
+this.remove();
 }
 
-}
 
 
 const sort = document.getElementById('sortButton');
@@ -86,7 +79,7 @@ sort.onclick = function sortList() {
   while (switching) {
     switching = false;
     var someItem = list.getElementsByClassName("todoContainer");
-    var priority = list.getElementsByClassName("priority");
+    var priority = list.getElementsByClassName("todoPriority");
 
     for (var i = 0; i < (priority.length - 1); i++) {
       shouldSwitch = false;
@@ -129,20 +122,28 @@ function dragStart(e) {
   dragSrcEl = this;
   e.dataTransfer.effectAllowed = 'move';
   e.dataTransfer.setData('text/html', this.innerHTML);
+
+    this.firstElementChild.addEventListener('click', taskFinished);
 };
  
 function dragEnter(e) {
   this.classList.add('over');
+
+    this.firstElementChild.addEventListener('click', taskFinished);
 }
  
 function dragLeave(e) {
   e.stopPropagation();
   this.classList.remove('over');
+
+    this.firstElementChild.addEventListener('click', taskFinished);
 }
  
 function dragOver(e) {
   e.preventDefault();
   e.dataTransfer.dropEffect = 'move';
+
+this.firstElementChild.addEventListener('click', taskFinished);
   return false;
 }
  
@@ -150,6 +151,7 @@ function dragDrop(e) {
   if (dragSrcEl != this) {
     dragSrcEl.innerHTML = this.innerHTML;
     this.innerHTML = e.dataTransfer.getData('text/html');
+    this.firstElementChild.addEventListener('click', taskFinished);
   }
   return false;
 }
@@ -160,8 +162,9 @@ function dragEnd(e) {
     item.classList.remove('over');
   });
   this.style.opacity = '1';
+  this.firstElementChild.addEventListener('click', taskFinished);
 }
-
+ 
 
 function addEventsDragAndDrop(el) {
 
