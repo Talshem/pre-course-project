@@ -1,3 +1,5 @@
+
+
 const prioritySelector = document.getElementById('prioritySelector');
 const textInput = document.getElementById('textInput');
 const addButton = document.getElementById('addButton');
@@ -20,10 +22,14 @@ const checking = document.createElement("INPUT");
 checking.setAttribute("type", "checkbox");
 checking.classList.add('checking');
 
-
-
+var attr = document.createAttribute('draggable');
+attr.value = 'true';
 const primaryDiv = document.createElement('div');
-primaryDiv.classList.add('todoContainer');
+primaryDiv.classList.add('todoContainer', 'draggable');
+primaryDiv.setAttributeNode(attr);
+
+
+
 const pDiv = document.createElement('div');
 pDiv.classList.add('priority');
 const dDiv = document.createElement('div');
@@ -42,20 +48,31 @@ tDiv.textContent = task;
 
 
 viewSection.appendChild(primaryDiv);
+addEventsDragAndDrop(primaryDiv);
 
-spanCount += 1;
+
+spanCount ++;
 document.getElementById("counter").innerHTML = spanCount;
 
 
-checking.onclick = function(e) {
-/* viewSection.removeChild(primaryDiv); */
- primaryDiv.style.textDecoration = "line-through";
+checking.onclick = function(){
+var marking = tDiv;
 
-if ( checking.checked === false ) {
- primaryDiv.style.textDecoration = "none";
+   if ( checking.checked ) {
+ marking.style.textDecoration = "line-through";
+ marking.style.backgroundColor = '#4CAF50';
+ spanCount --;
+ document.getElementById("counter").innerHTML = spanCount;
+   }
+
+else {
+ marking.style.textDecoration = null;
+ marking.style.backgroundColor = null;
+ spanCount ++;
+ document.getElementById("counter").innerHTML = spanCount;
  }
-
 }
+
 }
 
 
@@ -68,7 +85,7 @@ sort.onclick = function sortList() {
 
   while (switching) {
     switching = false;
-    var item = list.getElementsByClassName("todoContainer");
+    var someItem = list.getElementsByClassName("todoContainer");
     var priority = list.getElementsByClassName("priority");
 
     for (var i = 0; i < (priority.length - 1); i++) {
@@ -80,7 +97,7 @@ sort.onclick = function sortList() {
       }
     }
     if (shouldSwitch) {
-      item[i].parentNode.insertBefore(item[i + 1], item[i]);
+      someItem[i].parentNode.insertBefore(someItem[i + 1], someItem[i]);
       switching = true;
     }
   }
@@ -103,3 +120,62 @@ function myFunction() {
         }
     }
 }
+
+
+
+
+function dragStart(e) {
+  this.style.opacity = '0.4';
+  dragSrcEl = this;
+  e.dataTransfer.effectAllowed = 'move';
+  e.dataTransfer.setData('text/html', this.innerHTML);
+};
+ 
+function dragEnter(e) {
+  this.classList.add('over');
+}
+ 
+function dragLeave(e) {
+  e.stopPropagation();
+  this.classList.remove('over');
+}
+ 
+function dragOver(e) {
+  e.preventDefault();
+  e.dataTransfer.dropEffect = 'move';
+  return false;
+}
+ 
+function dragDrop(e) {
+  if (dragSrcEl != this) {
+    dragSrcEl.innerHTML = this.innerHTML;
+    this.innerHTML = e.dataTransfer.getData('text/html');
+  }
+  return false;
+}
+ 
+function dragEnd(e) {
+  var listItens = document.querySelectorAll('.draggable');
+  [].forEach.call(listItens, function(item) {
+    item.classList.remove('over');
+  });
+  this.style.opacity = '1';
+}
+
+
+function addEventsDragAndDrop(el) {
+
+  el.addEventListener('dragstart', dragStart, false);
+  el.addEventListener('dragenter', dragEnter, false);
+  el.addEventListener('dragover', dragOver, false);
+  el.addEventListener('dragleave', dragLeave, false);
+  el.addEventListener('drop', dragDrop, false);
+  el.addEventListener('dragend', dragEnd, false);
+
+}
+ 
+var listItens = document.querySelectorAll('.draggable');
+[].forEach.call(listItens, function(item) {
+  addEventsDragAndDrop(item);
+});
+
