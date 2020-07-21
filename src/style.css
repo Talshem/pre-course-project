@@ -1,0 +1,259 @@
+button:focus {outline:0;}
+input:focus {outline:0;}
+select:focus {outline:0;}
+
+
+html {
+    background: repeating-linear-gradient(
+      135deg,
+      #3c347e 0px,
+      #3c347e 5px,
+      #2e2869 5px,
+      #2e2869 10px
+    );
+    height:100vh;
+}
+
+h1 {
+   color: white;
+   text-shadow:
+       3px 3px 0 #000,
+     -1px -1px 0 #000,  
+      1px -1px 0 #000,
+      -1px 1px 0 #000,
+       1px 1px 0 #000;
+    text-align:center;
+font-weight: 900px;
+    font-size:50px;
+    margin-right:0px;
+color:white;
+}
+
+html {
+      font-weight: bold;
+      color:white;
+      font-family: 'Montserrat', sans-serif;  
+}
+
+
+#myInput {
+width: 300px;
+margin-right: 50px;
+margin-left: 25px;
+font-family: 'Montserrat', sans-serif; 
+  font-weight: bold; 
+border-radius: 5px;
+background-color:white;
+font-size: 20px;
+ border: 2px solid white;
+
+     margin-top: 10px;
+}
+
+#resetButton{
+      font-family: 'Montserrat', sans-serif;  
+        font-weight: bold; 
+      margin-left: 10px;
+    height: 32px;
+border-radius: 5px;
+position: relative;
+background-color:rgb(228, 228, 228);
+font-size: 20px;
+ border: 2px solid rgb(228, 228, 228);
+}
+
+#resetButton:hover{
+  transform: scale(1.2,1.2);
+   border: 2px solid rgb(163, 70, 70);
+  background-color: rgb(163, 70, 70);
+  transition: all 100ms;
+  transition-timing-function: cubic-bezier(0.48, 0.72, 0.62, 1.5);
+}
+
+#resetButton:active {
+   border: 2px solid  rgb(109, 34, 34);
+    background-color: rgb(109, 34, 34);
+}
+
+#sortButton{
+      font-family: 'Montserrat', sans-serif;  
+        font-weight: bold; 
+    height: 32px;
+border-radius: 5px;
+position: relative;
+background-color:rgb(228, 228, 228);
+font-size: 20px;
+ border: 2px solid rgb(228, 228, 228);
+}
+
+
+
+#sortButton:hover{
+  transform: scale(1.2,1.2);
+   border: 2px solid grey;
+  background-color: grey;
+  transition: all 100ms;
+  transition-timing-function: cubic-bezier(0.48, 0.72, 0.62, 1.5);
+}
+
+#sortButton:active {
+   border: 2px solid #444;
+  background-color: #444;
+
+}
+
+
+#textInput{
+      font-weight: bold;
+font-family: 'Montserrat', sans-serif;  
+width: 422px;
+border-radius: 5px;
+background-color:white;
+font-size: 20px;
+border: 2px solid white;
+
+}
+
+#prioritySelector{
+width: 50px;
+height: 32px;
+border-radius: 5px;
+background-color:white;
+font-size: 20px;
+ border: 2px solid white;
+}
+
+
+
+#addButton{
+width: 50px;
+height: 32px;
+border-radius: 5px;
+background-color: #4CAF50;
+font-size: 20px;
+ border: 2px solid #4CAF50;
+  margin-bottom: 20px;
+}
+
+#addButton:hover {
+     border: 2px solid #0f6412;
+  background-color: #0f6412;
+  transition: all 200ms;
+  transition-timing-function: cubic-bezier(0.48, 0.72, 0.62, 1.5);
+}
+
+#addButton:active {
+   border: 2px solid #043b06;
+  background-color: #043b06;
+  transition: all 200ms;
+  transition-timing-function: cubic-bezier(0.48, 0.72, 0.62, 1.5);
+
+
+}
+
+p{
+  margin-left: 25px;
+  font-size: 12px;
+}
+#viewSection {
+  line-height: 2;
+    float: left;
+    height:375px;
+    width: 540px;
+  overflow: auto;
+  margin-bottom: 5px;
+}
+
+.todoContainer {
+    white-space: nowrap;
+    margin-bottom: 5px;
+}
+
+
+
+.todoPriority {
+display:inline;
+float:left;
+margin-right: 15px;
+margin-left: 15px;
+}
+
+.todoCreatedAt {
+display:inline;
+float: left;
+margin-right: 15px;
+}
+
+.checking {
+         display:inline;
+float: left;
+margin-top: 10px;
+width: 15px;
+height:15px;
+} 
+
+
+.square {
+    border-radius: 5%;
+    border: 3px solid white;
+    box-shadow: 0px 0px 10px 3px black;
+    background-color:#222;
+    padding: 10px 0px 100px 10px;
+    width: 550px;
+    height: 580px;
+    margin:50px auto;
+    
+}
+
+
+::-webkit-scrollbar {
+  width: 14px;
+}
+::-webkit-scrollbar-track {
+  background: #f1f1f1; 
+}
+::-webkit-scrollbar-thumb {
+  background: #888; 
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #555; 
+}
+
+.linethrough {
+  text-decoration: line-through;
+}
+
+
+body section .draggable {
+  will-change: transform;
+  list-style-type: none;
+  cursor: move;
+  transition: all 200ms;
+  user-select: none;
+  position: relative;
+}
+
+body section .draggable:hover {
+     border: 2px dashed rgba(0, 0, 0, 0.4);
+     background-color:rgba(255, 255, 255, 0.2);
+     border-radius: 5px;
+
+}
+body section .draggable:after {
+  cursor: pointer;
+  transition: all 200ms;
+  transition-timing-function: cubic-bezier(0.48, 0.72, 0.62, 1.5);
+  transform: translateX(20%);
+  opacity: 0;
+  
+}
+body section .draggable:hover:after {
+  opacity: 1;
+  transform: translate(0);
+}
+
+.over {
+  transform: scale(0.95,0.95);
+       border: 2px dashed rgba(0, 0, 0, 0.8);
+     background-color:rgba(255, 255, 255, 0.4);
+}
