@@ -14,7 +14,7 @@
 - New feature - you can mark tasks that you already completed. they will be automatically dragged down to the bottom of the list once you press the 'sort' button.
 
 
-![Add todo task](./readme-files/Untitled.jpg)
+![Add todo task](./ui-testing-recording.gif)
 
 
 # testing gif
@@ -38,7 +38,7 @@ In this project you will create a Todo List Web Application, in which the user c
 
 Goal (only functionality):
 
-![Add todo task](./readme-files/ui-testing-recording.gif)
+![Add todo task](./readme-files/basic-todo.gif
 
 
 
@@ -115,7 +115,11 @@ $ npm run test
 
 - Add a button with id `sortButton`. Clicking this element should resort the todo list by their todos priority (DESC)
 
-  ![alt text](./readme-files/todo-bonus.gif)
+  ![alt text](./readme-files/todo-bonus.
+  
+  
+  
+  )
 
 
 
