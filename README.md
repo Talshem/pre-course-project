@@ -14,7 +14,7 @@ Bonus
 # New feature - you can mark tasks that you already completed. they will be automatically dragged down to the bottom of the list once you press the 'sort' button.
 
 
-(./readme-files/https://ibb.co/7nfP7TQ)
+(./readme-files/Untitled.jpg)
 
 
 -------------------------------
