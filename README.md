@@ -18,8 +18,7 @@
 
 
 # testing gif
-![Add todo task](./readme-files/basic-todo.gif
-)
+![Add todo task](./ui-testing-recording.gif)
 
 -------------------------------
 
