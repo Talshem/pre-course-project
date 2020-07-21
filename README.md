@@ -14,11 +14,11 @@
 - New feature - you can mark tasks that you already completed. they will be automatically dragged down to the bottom of the list once you press the 'sort' button.
 
 
-![Add todo task](./ui-testing-recording.gif)
+![Add todo task](./readme-files/Untitled.jpg)
 
 
 # testing gif
-![Add todo task](./ui-testing-recording.gif)
+![Add todo task](./readme-files/ui-testing-recording.gif)
 
 -------------------------------
 
