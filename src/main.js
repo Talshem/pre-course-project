@@ -233,7 +233,6 @@ pos -= 0.05;
 kill.children[0].style.opacity = pos;
 kill.children[1].style.opacity = pos;
 kill.children[2].style.opacity = pos;
-kill.children[3].style.opacity = pos;
 }
 
       if (kill.children[3]){
