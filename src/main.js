@@ -9,6 +9,13 @@ const resetButton = document.getElementById('resetButton')
 var spanCount = 0;
 var j = 1;
 
+textInput.addEventListener("keyup", function(event) {
+  if (event.keyCode === 13) {
+   event.preventDefault();
+addButton.click();
+  }
+});
+
 addButton.onclick = function()
 {
 var task = textInput.value;
@@ -49,7 +56,18 @@ primaryDiv.appendChild(tDiv);
 tDiv.textContent = task;
 
 
-viewSection.appendChild(primaryDiv);
+var divOpacity = 0;
+viewSection.appendChild(primaryDiv)
+primaryDiv.style.opacity = '0';
+primaryDiv.firstChild.style.opacity = '1';
+
+setInterval(show, 20);
+function show(){
+if (divOpacity <= 1){
+primaryDiv.style.opacity = divOpacity; 
+      divOpacity += 0.1; 
+}}
+
 localStorage.setItem(dDiv.textContent, tDiv.textContent);
 
 addEventsDragAndDrop(primaryDiv);
@@ -59,23 +77,34 @@ spanCount ++;
 document.getElementById("counter").innerHTML = spanCount;
 }
 
+
+
+
+
+
 function taskFinished(){
-  var r = confirm("Did you finish this task?");
-  if (r == true) 
-  {
+
+var greenOpacity = 0;
+this.parentNode.lastElementChild.style.opacity = '0';
+var x = this.parentNode.lastElementChild;
+
+setInterval(greenBar, 35);
+function greenBar(){
+  if (greenOpacity < 0.75){
+greenOpacity += 0.05;
+x.style.opacity = greenOpacity;
+}}
+
+
 this.parentNode.lastElementChild.style.backgroundColor = '#4CAf99';
 this.parentNode.children[1].style.color = "rgb(76, 175, 153, 0)";
 this.parentNode.lastElementChild.style.textDecoration = "line-through";
 this.parentNode.children[1].innerHTML = '0';
+this.parentNode.children[2].style.margin = '0px 17px 0px 17px';
 this.parentNode.lastElementChild.style.borderRadius = "5px" ;
-this.parentNode.lastElementChild.style.opacity = "0.75" ;
 spanCount --;
 document.getElementById("counter").innerHTML = spanCount;
 this.remove();
-  }
-        else {
-  this.checked = false;
-}
 }
 
 resetButton.onclick = function resetList(){
@@ -189,24 +218,29 @@ function dragEnd(e) {
  
 
 function deleteItem(ev) {
-  var elem = this;
+ ev.preventDefault();
+  var kill = this;
+  var pos = 0.75;
 
-  
-  ev.preventDefault();
-  var pos = 1;
-  var id = setInterval(frame, 50);
+ setInterval(frame, 35);
   function frame() {
-      elem.style.opacity = pos; 
-      pos -= 0.1; 
-      if ( pos <= -0.5){
-       elem.remove();  
+    
+      if ( pos <= 0){
+       kill.remove();  
       }
-    }
-      if (elem.children[3]){
-      elem.children[0].remove();
-      elem.children[0].style.margin = '0px 0px 0px 37px';
-      elem.children[1].style.margin = '0px 15px 0px 15px';
-      elem.children[2].style.margin = '0px 15px 0px 15px';
+
+pos -= 0.05; 
+kill.children[0].style.opacity = pos;
+kill.children[1].style.opacity = pos;
+kill.children[2].style.opacity = pos;
+kill.children[3].style.opacity = pos;
+}
+
+      if (kill.children[3]){
+      kill.children[0].remove();
+      kill.children[0].style.margin = '0px 0px 0px 37px';
+      kill.children[1].style.margin = '0px 15px 0px 15px';
+      kill.children[2].style.margin = '0px 15px 0px 15px';
        spanCount --;
 }
  document.getElementById("counter").innerHTML = spanCount;
