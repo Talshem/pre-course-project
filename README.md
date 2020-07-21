@@ -17,6 +17,10 @@
 ![Add todo task](./readme-files/Untitled.jpg)
 
 
+# testing gif
+![Add todo task](./readme-files/basic-todo.gif
+)
+
 -------------------------------
 
 
@@ -34,7 +38,7 @@ In this project you will create a Todo List Web Application, in which the user c
 
 Goal (only functionality):
 
-![Add todo task](./readme-files/basic-todo.gif)
+![Add todo task](./readme-files/ui-testing-recording.gif)
 
 
 
