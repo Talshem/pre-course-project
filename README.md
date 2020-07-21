@@ -1,3 +1,31 @@
+
+
+Bonus
+-----
+
+# Drag and drop - you can drag a task and swap it's place with another task.
+
+# Local Storage - there is a local storage containing the details of the entire tasks that were submitted by the user throught usage history.
+
+# My app's website - https://pre-course-project-rho.vercel.app/
+
+# Searching bar - filling this bar with a certain text content will filter from the list all the tasks that their text content doesn't match the searching bar's input.
+
+# New feature - you can mark tasks that you already completed. they will be automatically dragged down to the bottom of the list once you press the 'sort' button.
+
+
+(./readme-files/https://ibb.co/7nfP7TQ)
+
+
+-------------------------------
+
+
+
+
+
+
+
+
 # ![Scale-Up Velocity](./readme-files/logo-main.png)   Pre Course Project - Todo List
 This project will include most of the topics we have learnt so far.
 This repository includes a basic skeleton with automated tests, use it for you submissions.
