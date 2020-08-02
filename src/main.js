@@ -279,7 +279,7 @@ localStorage.removeItem('tmemory' + memoryDelete);
 localStorage.removeItem('dmemory' + memoryDelete);
 localStorage.removeItem('pmemory' + memoryDelete);
 
- setInterval(frame, 35);
+ setInterval(frame, 20);
   function frame() {
     
       if ( pos <= 0){
